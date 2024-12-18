@@ -1,9 +1,7 @@
-"use client";
-
 import Sidebar from "@/src/components/shared/Sidebar";
 import { useSidebarContext } from "@/src/contexts/SidebarContext";
 import BankPageHeader from "@/src/features/bank/components/BankPageHeader";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 const BanksContainer = dynamic(
@@ -13,16 +11,6 @@ const BanksContainer = dynamic(
 
 export default function Page() {
   const { isDrawerSidebarOpened, close } = useSidebarContext();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (isDrawerSidebarOpened) {
-        document.body.classList.add("overflow-y-hidden");
-      } else {
-        document.body.classList.remove("overflow-y-hidden");
-      }
-    }
-  }, [isDrawerSidebarOpened]);
 
   return (
     <div className="h-full w-full">

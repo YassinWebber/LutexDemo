@@ -5,6 +5,7 @@ import AccountPanel from "@/src/components/shared/AccountPanel";
 import SidebarNavLinks from "./SidebarNavLinks";
 import { useSidebarContext } from "@/src/contexts/SidebarContext";
 import { XIcon } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Sidebar({ className }: { className?: string }) {
   const { isSidebarOpened, isDrawerSidebarOpened, close } = useSidebarContext();
@@ -14,6 +15,16 @@ export default function Sidebar({ className }: { className?: string }) {
     name: "New Lutex",
     membersCount: 4,
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isDrawerSidebarOpened) {
+        document.body.classList.add("overflow-y-hidden");
+      } else {
+        document.body.classList.remove("overflow-y-hidden");
+      }
+    }
+  }, [isDrawerSidebarOpened]);
 
   return (
     isSidebarOpened && (

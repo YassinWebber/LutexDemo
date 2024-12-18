@@ -1,9 +1,7 @@
 import * as LucideIcons from "lucide-react";
 
-// import Image from "next/image";
 import {
   BankImageComponent,
-  // BankImage,
   BankImageFallback,
 } from "@/src/features/bank/components/BankImage";
 import { FC } from "react";
@@ -13,8 +11,6 @@ import { BankTypes, IconObject } from "../types/bank.types";
 export default function BankCard({
   name,
   description,
-  // banner,
-  // image,
   details,
   price,
 }: BankTypes) {

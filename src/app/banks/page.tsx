@@ -1,3 +1,5 @@
+"use client";
+
 import Sidebar from "@/src/components/shared/Sidebar";
 import { useSidebarContext } from "@/src/contexts/SidebarContext";
 import BankPageHeader from "@/src/features/bank/components/BankPageHeader";

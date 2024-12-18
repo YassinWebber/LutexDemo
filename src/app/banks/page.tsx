@@ -3,8 +3,13 @@
 import Sidebar from "@/src/components/shared/Sidebar";
 import { useSidebarContext } from "@/src/contexts/SidebarContext";
 import BankPageHeader from "@/src/features/bank/components/BankPageHeader";
-import BanksContainer from "@/src/features/bank/components/BanksContainer";
 import { Suspense, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const BanksContainer = dynamic(
+  () => import("@/src/features/bank/components/BanksContainer"),
+  { ssr: false },
+);
 
 export default function Page() {
   const { isDrawerSidebarOpened, close } = useSidebarContext();
@@ -33,7 +38,7 @@ export default function Page() {
       <div className="sticky top-0 z-40">
         <BankPageHeader />
       </div>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<div>Loading...</div>}>
         <BanksContainer />
       </Suspense>
     </div>
